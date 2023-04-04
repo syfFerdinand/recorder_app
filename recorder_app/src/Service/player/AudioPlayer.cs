@@ -1,6 +1,5 @@
 ﻿using Android.Media;
 using recorder_app.src.Interface;
-using System.IO;
 
 namespace recorder_app.src.Service
 {
@@ -12,7 +11,7 @@ namespace recorder_app.src.Service
         private int currentPosistionLength = 0;
         private bool isPrepared;
         private bool isCompleted;
-    #endregion
+        #endregion
         void IAudioPlayer.PlayAudio(string filePath)
         {
             if (_mediaPlayer != null && _mediaPlayer.IsPlaying)
@@ -78,7 +77,7 @@ namespace recorder_app.src.Service
                 positionTimeSeconds = positionTimeSeconds /1000;
                 TimeSpan currentTime = TimeSpan.FromSeconds(positionTimeSeconds);
                 string currentPlayTime = string.Format("{0:mm\\:}", new TimeSpan());
-                retutn currentPlayTime;
+                return currentPlayTime;
             }
             return null;
         }

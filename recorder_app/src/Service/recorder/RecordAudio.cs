@@ -10,7 +10,7 @@ namespace recorder_app.src.Service
         private string storagePath;
         private bool isRecordStarted = false;
         #endregion
-
+            
         #region Methods
         void IRecordAudio.StartRecord()
         {

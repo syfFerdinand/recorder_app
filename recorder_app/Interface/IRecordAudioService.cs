@@ -1,8 +1,8 @@
 ﻿
-namespace recorder_app.src.Interface
+namespace recorder_app.Interface
 {
-    public interface IRecordAudio
-{
+    public interface IRecordAudioService
+    {
     void StartRecord();
     string StopRecord();
     void PauseRecord();

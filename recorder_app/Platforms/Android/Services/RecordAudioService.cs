@@ -1,9 +1,9 @@
 ﻿using Android.Media;
-using recorder_app.src.Interface;
+using recorder_app.Interface;
 
-namespace recorder_app.src.Service
+namespace recorder_app.Service
 {
-    public class AndroidRecordAudio : IRecordAudio
+    public class RecordAudioService : IRecordAudioService
     {
         #region Fields
         private MediaRecorder mediaRecorder;
@@ -12,7 +12,7 @@ namespace recorder_app.src.Service
         #endregion
             
         #region Methods
-        void IRecordAudio.StartRecord()
+        void IRecordAudioService.StartRecord()
         {
             if (mediaRecorder == null)
             {
@@ -33,7 +33,7 @@ namespace recorder_app.src.Service
             isRecordStarted = true;
         }
 
-        string IRecordAudio.StopRecord()
+        string IRecordAudioService.StopRecord()
         {
             if (mediaRecorder == null)
             {
@@ -45,7 +45,7 @@ namespace recorder_app.src.Service
             isRecordStarted = false;
             return storagePath;
         }
-        void IRecordAudio.PauseRecord()
+        void IRecordAudioService.PauseRecord()
         {
             if (mediaRecorder == null)
             {
@@ -55,7 +55,7 @@ namespace recorder_app.src.Service
             isRecordStarted = false;
         }
 
-        void IRecordAudio.ResetRecord()
+        void IRecordAudioService.ResetRecord()
         {
             if (mediaRecorder != null)
             {

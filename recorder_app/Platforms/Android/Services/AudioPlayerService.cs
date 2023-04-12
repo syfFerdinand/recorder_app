@@ -1,10 +1,10 @@
 ﻿using Android.Media;
-using recorder_app.src.Interface;
+using recorder_app.Interface;
 
-namespace recorder_app.src.Service
+namespace recorder_app.Service
 {
     
-    public class AudioPlayer : IAudioPlayer
+    public class AudioPlayerService : IAudioPlayerService
     {
         #region Fields
         private MediaPlayer _mediaPlayer;
@@ -12,7 +12,7 @@ namespace recorder_app.src.Service
         private bool isPrepared;
         private bool isCompleted;
         #endregion
-        void IAudioPlayer.PlayAudio(string filePath)
+        void IAudioPlayerService.PlayAudio(string filePath)
         {
             if (_mediaPlayer != null && _mediaPlayer.IsPlaying)
             {
@@ -45,7 +45,7 @@ namespace recorder_app.src.Service
             }
         }
 
-        void IAudioPlayer.Pause()
+        void IAudioPlayerService.Pause()
         {
             if(_mediaPlayer != null && _mediaPlayer.IsPlaying)
             {
@@ -54,7 +54,7 @@ namespace recorder_app.src.Service
             }
         }
 
-        void IAudioPlayer.Stop()
+        void IAudioPlayerService.Stop()
         {
             if(_mediaPlayer != null)
             {
@@ -69,7 +69,7 @@ namespace recorder_app.src.Service
             }
         }
 
-        string IAudioPlayer.GetCurrentPlayTime()
+        string IAudioPlayerService.GetCurrentPlayTime()
         {
             if(_mediaPlayer != null)
             {
@@ -82,7 +82,7 @@ namespace recorder_app.src.Service
             return null;
         }
 
-        bool IAudioPlayer.CheckFinishedPlayingAudio()
+        bool IAudioPlayerService.CheckFinishedPlayingAudio()
         {
             return isCompleted;
         }

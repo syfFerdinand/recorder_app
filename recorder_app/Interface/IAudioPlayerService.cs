@@ -1,7 +1,7 @@
 ﻿
-namespace recorder_app.src.Interface
+namespace recorder_app.Interface
 {
-    public interface IAudioPlayer
+    public interface IAudioPlayerService
     {
     void PlayAudio(string filePath);
     void Pause();

@@ -49,6 +49,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\Fonts\AudioIconFonts.ttf" />
+	</ItemGroup>
+	
+	<ItemGroup>
 	  <PackageReference Include="Syncfusion.Maui.ListView" Version="20.3.52" />
 	</ItemGroup>
 

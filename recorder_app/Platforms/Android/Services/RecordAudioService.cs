@@ -12,12 +12,15 @@ namespace recorder_app.Service
         #endregion
             
         #region Methods
-        void IRecordAudioService.StartRecord()
+        public void StartRecord()
         {
             if (mediaRecorder == null)
             {
                 SetAudioFilePath();
-                mediaRecorder = new MediaRecorder();
+                if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.S)
+                    mediaRecorder = new MediaRecorder(MainActivity.context);
+                else
+                    mediaRecorder = new MediaRecorder();
                 mediaRecorder.Reset();
                 mediaRecorder.SetAudioSource(AudioSource.Mic);
                 mediaRecorder.SetOutputFormat(OutputFormat.AacAdts);
@@ -33,7 +36,7 @@ namespace recorder_app.Service
             isRecordStarted = true;
         }
 
-        string IRecordAudioService.StopRecord()
+        public string StopRecord()
         {
             if (mediaRecorder == null)
             {
@@ -45,7 +48,7 @@ namespace recorder_app.Service
             isRecordStarted = false;
             return storagePath;
         }
-        void IRecordAudioService.PauseRecord()
+        public void PauseRecord()
         {
             if (mediaRecorder == null)
             {
@@ -55,7 +58,7 @@ namespace recorder_app.Service
             isRecordStarted = false;
         }
 
-        void IRecordAudioService.ResetRecord()
+        public void ResetRecord()
         {
             if (mediaRecorder != null)
             {
@@ -66,12 +69,12 @@ namespace recorder_app.Service
             isRecordStarted = false;
         }
 
-        internal void SetAudioFilePath()
+        private void SetAudioFilePath()
         {
             string fileName = "/Record_" + DateTime.UtcNow.ToString("ddMMM_hhmmss") + ".mp3";
             var path = Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
             storagePath = path + fileName;
-            Directory.CreateDirectory(storagePath);
+            Directory.CreateDirectory(path);
         }
         #endregion
     }

@@ -12,14 +12,16 @@ namespace recorder_app.Service
         private bool isPrepared;
         private bool isCompleted;
         #endregion
-        void IAudioPlayerService.PlayAudio(string filePath)
+
+        #region Methods
+        public void PlayAudio(string filePath)
         {
-            if (_mediaPlayer != null && _mediaPlayer.IsPlaying)
+            if (_mediaPlayer != null && !_mediaPlayer.IsPlaying)
             {
                 _mediaPlayer.SeekTo(currentPosistionLength);
                 currentPosistionLength = 0;
                 _mediaPlayer.Start();
-            }else if(_mediaPlayer == null && !_mediaPlayer.IsPlaying)
+            }else if(_mediaPlayer == null || !_mediaPlayer.IsPlaying)
             {
                 try
                 {
@@ -45,7 +47,7 @@ namespace recorder_app.Service
             }
         }
 
-        void IAudioPlayerService.Pause()
+        public void Pause()
         {
             if(_mediaPlayer != null && _mediaPlayer.IsPlaying)
             {
@@ -54,7 +56,7 @@ namespace recorder_app.Service
             }
         }
 
-        void IAudioPlayerService.Stop()
+        public void Stop()
         {
             if(_mediaPlayer != null)
             {
@@ -76,15 +78,16 @@ namespace recorder_app.Service
                 var positionTimeSeconds = double.Parse(_mediaPlayer.CurrentPosition.ToString());
                 positionTimeSeconds = positionTimeSeconds /1000;
                 TimeSpan currentTime = TimeSpan.FromSeconds(positionTimeSeconds);
-                string currentPlayTime = string.Format("{0:mm\\:}", new TimeSpan());
+                string currentPlayTime = string.Format("{0:mm\\:ss}", currentTime);
                 return currentPlayTime;
             }
             return null;
         }
 
-        bool IAudioPlayerService.CheckFinishedPlayingAudio()
+        public bool CheckFinishedPlayingAudio()
         {
             return isCompleted;
         }
+        #endregion
     }
 }

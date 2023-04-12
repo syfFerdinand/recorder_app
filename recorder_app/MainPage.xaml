@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
+    x:Class="recorder_app.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-             xmlns:listView="http://schemas.syncfusion.com/maui"
-             x:Class="recorder_app.MainPage">
+    x:Name="mainPage"
+    NavigationPage.HasNavigationBar="False">
+
     <Grid
         Margin="16"
         RowDefinitions="auto,*,auto,auto"
@@ -70,20 +72,20 @@
                                     CommandParameter="{Binding .}"
                                     FontFamily="AudioIconFonts"
                                     FontSize="22"
-                                    IsVisible="{Binding IsPauseVisble}"
+                                    IsVisible="{Binding IsPauseVisible}"
                                     Text="&#xea16;"
                                     TextColor="Black" />
                                 <Label
                                     Grid.Column="1"
                                     FontSize="14"
-                                    Text="{Binding AudioName}"
+                                    Text="{Binding Audioname}"
                                     TextColor="Black"
                                     VerticalTextAlignment="Center" />
                                 <Label
                                     Grid.Column="2"
                                     Margin="4,0,12,0"
                                     FontSize="14"
-                                    IsVisible="{Binding IsPauseVisble}"
+                                    IsVisible="{Binding IsPauseVisible}"
                                     Text="{Binding CurrentAudioPosition}"
                                     TextColor="Black"
                                     VerticalTextAlignment="Center" />

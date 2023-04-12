@@ -234,7 +234,7 @@ namespace recorder_app.ViewModels
                 AudioFile.IsPlayVisible = true;
                 StopAudio();
             }
-            if (obj is Audio)
+            if ((Audio)obj is Audio)
             {
                 audioFile = (Audio)obj;
                 audioFile.IsPlayVisible = false;
@@ -242,6 +242,7 @@ namespace recorder_app.ViewModels
                 audioPlayerService.PlayAudio(audioFilePath);
                 SetCurrentAudioPosition();
             }
+            Console.WriteLine("done !");
         }
         private void PauseAudio(object obj)
         {
@@ -283,6 +284,7 @@ namespace recorder_app.ViewModels
         }
         private async void DeleteAudio(Audio obj)
         {
+            Console.WriteLine("done !");
             var alert = await App.Current.MainPage.DisplayAlert("Alert", "Are you sure you want to delete the audio?", "Yes", "No");
             if (alert)
                 Audios.Remove(obj);
